@@ -2,7 +2,7 @@ const pergunta1 = document.getElementById('pergunta-campo-resposta1')
 const pergunta2 = document.getElementById('pergunta-campo-resposta2')
 const pergunta3 = document.getElementById('pergunta-campo-resposta3')
 const pergunta4 = document.getElementById('pergunta-campo-resposta4')
-const perguntaAluno = document.getElementById('pergunta-aluno1')
+//const perguntaAluno = document.getElementsById('pergunta-aluno1')
 
 const definirRespostas = () => {
     pergunta1.innerHTML = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere recusandae perferendis velit veniam natus nesciunt ullam ad illo ex, ab adipisci quod accusamus optio doloribus hic dolores, explicabo minus sapiente. Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere recusandae perferendis velit veniam natus nesciunt ullam ad illo ex, ab adipisci quod accusamus optio doloribus hic dolores, explicabo minus sapiente. Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere recusandae perferendis velit veniam natus nesciunt ullam ad illo ex, ab adipisci quod accusamus optio doloribus hic dolores, explicabo minus sapiente."
@@ -13,7 +13,7 @@ const definirRespostas = () => {
 
     pergunta4.innerHTML = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere recusandae perferendis velit veniam natus nesciunt ullam ad illo ex, ab adipisci quod accusamus optio doloribus hic dolores, explicabo minus sapiente. Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere recusandae perferendis velit veniam natus nesciunt ullam ad illo ex, ab adipisci quod accusamus optio doloribus hic dolores, explicabo minus sapiente. Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere recusandae perferendis velit veniam natus nesciunt ullam ad illo ex, ab adipisci quod accusamus optio doloribus hic dolores, explicabo minus sapiente."
 
-    perguntaAluno.innerHTML = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere recusandae perferendis velit veniam natus nesciunt ullam ad illo ex, ab adipisci quod accusamus optio doloribus hic dolores, explicabo minus sapiente."
+    //perguntaAluno.innerHTML = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere recusandae perferendis velit veniam natus nesciunt ullam ad illo ex, ab adipisci quod accusamus optio doloribus hic dolores, explicabo minus sapiente."
 
 }
 
