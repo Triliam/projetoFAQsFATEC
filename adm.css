@@ -1,26 +1,51 @@
 
-*{
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700&display=swap');
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
 
+::-webkit-scrollbar{
+    width: 10px;
+    border-radius: 150px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+::-webkit-scrollbar-track{
+    background: #bb3f39;
+    border-radius: 150px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+::-webkit-scrollbar-thumb{
+    background: #1f1e1e;
+    border-radius: 30px;
+    border-radius: 150px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+body {
+    background-color: #FFFF;
+    overflow: hidden;
+}
+
+/* ----- CABECALHO ----- */
 header {
-height: 15vh;
-min-height: 135px;
-width: 100%;
-background-color: #CA4F49;
-display: flex;
-justify-content: space-between;
-align-items: center;
-text-transform: uppercase;
-font-family: 'Roboto', sans-serif;
-box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-padding: 0px 25px;
-color: #ffff;
+    height: 15vh;
+    min-height: 135px;
+    width: 100%;
+    background-color: #CA4F49;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    padding: 0px 25px;
+    color: #ffff;
 }
 
 .sair {
@@ -38,52 +63,27 @@ color: #ffff;
 }
 
 .botao-sair:hover {
-    transition: all 1s ease;
-    transform: translateY(-10px);
-    transform: translateX(-10px);
+    transition: all 0.5s ease;
+    transform: translateX(-10px);    
 }
 
-body {
-background-color: #FFFF;
-}
-
-main {
-background-color: #ECEBEB;
-height: 70vh;
-margin: 20px;
-border-radius: 20px;
-box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.25);
-overflow-y: scroll;
-}
-
-::-webkit-scrollbar{
-    width: 10px;
-}
-::-webkit-scrollbar-track{
-    background: #bb3f39;
-    border-radius: 30px;
-}
-::-webkit-scrollbar-thumb{
-    background: #1f1e1e;
-    border-radius: 30px;
-}
-
+/* ----- BOTÕES ----- */
 #botao{
-display: flex;
-justify-content: center;
-align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .botao-adm{  
-margin: 20px 20px 0px 20px;
-border: none;
-border-radius: 19px;
-padding: 10px 20px;
-text-transform: uppercase;
-font-weight: 700;
-background-color: #D9D9D9;   
-box-shadow: inset -3px 4px 3px rgba(0, 0, 0, 0.25);
-
+    margin: 20px 20px 0px 20px;
+    border: none;
+    border-radius: 19px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    background-color: #D9D9D9;   
+    box-shadow: inset -3px 4px 3px rgba(0, 0, 0, 0.25);
+    transition: all 0.2s ease;
 }
 
 .botao-adm:hover{
@@ -91,16 +91,72 @@ box-shadow: inset -3px 4px 3px rgba(0, 0, 0, 0.25);
     border: none;
     color: white;
     box-shadow: 2px 4px 0px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
 }
 
+.selecionado {
+    background-color: #CA4F49;
+    border: none;
+    color: white;
+    box-shadow: 2px 4px 0px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+}
+
+
+/* ----- TITULO DOS CAMPOS DO PAINEL ----- */
+#titulo {
+    margin-top: 30px;
+    text-align: center;
+}
+
+#selecao-perguntas {
+    position: relative;
+    left: 25px;
+}
+
+#selecao-perguntas select {
+    border: none;
+    border-radius: 5px;
+    background-color: #ECEBEB;
+}
+
+/* ----- CORPO DO PAINEL ----- */
+main {
+    background-color: #ECEBEB;
+    height: 65vh;
+    margin: 20px;
+    border-radius: 20px;
+    box-shadow: 6px 6px rgba(0, 0, 0, 0.25);
+    overflow-y: scroll;
+    transition: all 0.5s ease;
+}
+
+/* ----- CAMPOS ----- */
+#adicionar-perguntas{
+    display: none;
+}
+
+#perguntas-resposta {
+    display: none;
+}
+
+#perguntas-sem-resposta {
+    display: none;
+}
+
+#perguntas-excluidas {
+    display: none;
+}
+
+
+/* ----- PERGUNTAS ----- */
 .pergunta{
     background-color: #E2CBCB;
     padding: 20px;
     margin: 20px;
-    height: 260px;
+    height: 200px;
     border-radius: 20px;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
-    font-family: 'Roboto', sans-serif;
+    box-shadow: 4px 4px rgba(0, 0, 0, 0.2);
 }
 
 .pergunta-cabecalho{
@@ -141,6 +197,13 @@ box-shadow: inset -3px 4px 3px rgba(0, 0, 0, 0.25);
     background-color:#b9251e;
 }
 
+.addButton{
+    background-color: #1b5829;
+}
+.recuperarButton{
+background-color: #CA4F49;
+}
+
 .pergunta-botao{
     margin: 5px;
     padding: 7px 10px;
@@ -158,11 +221,29 @@ box-shadow: inset -3px 4px 3px rgba(0, 0, 0, 0.25);
 }
 
 
-.pergunta-camporesposta{
+.pergunta-campo-resposta{
+    display: flex;
+    align-items: baseline;
+    resize: none;
+    padding: 7px;
     width: 100%;
-    height: 140px;
+    height: 90px;
     border: none;
     border-radius: 0 0 19px 19px;
+    font-size: 20px;
+}
+
+.pergunta-aluno{
+    background: none;
+    resize: none;
+    display: flex;
+    align-items: baseline;
+    padding: 7px;
+    width: 100%;
+    border: none;
+    border-radius: 0 0 19px 19px;
+    font-size: 20px;
+    color: black;
 }
 
 

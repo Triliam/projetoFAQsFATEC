@@ -7,9 +7,11 @@
     <title>Portal Administrativo</title>
     <link rel="stylesheet" href="adm.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="script.js" defer></script>
 </head>
-    <body>
+    <body onload="definirRespostas()">
         
+        <!-- CABECALHO -->
         <header>
             <img src="imagens/logo-fatec.png" alt="" width="180px">
             <h1>Painel de Administração</h1> 
@@ -17,90 +19,213 @@
                 <button class="botao-sair">Sair</button>
             </div> 
         </header>
-        
-            <div id="botao">
-                <button class="botao-adm">Adicionar pergunta</button>
-                <button class="botao-adm">Perguntas com respostas</button>
-                <button class="botao-adm">Perguntas sem respostas</button>
-                <button class="botao-adm">Perguntas excluidas</button>
-                <button class="botao-adm">Visualizar perguntas</button> 
-            </div>
+
+        <!-- BOTÕES -->
+        <div id="botao">
+            <button class="botao-adm" id="botao-adicionar-pergunta" onclick="selecionarBtn('addPergunta')">Adicionar pergunta</button>
+            <button class="botao-adm" id="botao-perguntas-com-respostas" onclick="selecionarBtn('pergunta-com-respostas')">Perguntas com respostas</button>
+            <button class="botao-adm" id="botao-perguntas-sem-respostas" onclick="selecionarBtn('pergunta-sem-respostas')">Perguntas sem respostas</button>
+            <button class="botao-adm" id="botao-perguntas-excluidas" onclick="selecionarBtn('pergunta-perguntas-excluidas')">Perguntas excluidas</button>
+            <button class="botao-adm">Visualizar perguntas</button> 
+        </div>
+
+        <!-- TITULO -->
+        <h2 id="titulo"></h2>
+
+        <div id="selecao-perguntas" style="display:none">
+            <span>Selecione o tema de pergunta: </span>
+            <select name="" id="">
+                <option value="">DSM</option>
+                <option value="">GE</option>
+                <option value="">Provas</option>
+            </select>
+        </div>
 
         <main>
-        
-            <div class="pergunta" id="pergunta">
 
-                <div class="pergunta-cabecalho">
-                    <div class="pergunta-campo-informacoes">
-                        <div class="pergunta-imagem">
-                            <img src="imagens/user.png" alt="imagem-perfil" width="40px" height="40px">
+            <!-- ADICIONAR PERGUNTAS -->
+            <div id="adicionar-perguntas">
+                <div class="pergunta" id="pergunta">
+                    <div class="pergunta-cabecalho">
+                        <div class="pergunta-campo-informacoes">
+                            <div class="pergunta-imagem">
+                                <img src="imagens/user.png" alt="imagem-perfil" width="40px" height="40px">
+                            </div>
+                            <div class="pergunta-informacoes">
+                                <input>
+                                <!-- <span>Nome do Aluno | </span>
+                                <span>Data da Pergunta</span> -->
+                            </div>
                         </div>
-                        <div class="pergunta-informacoes">
-                            <h2>Pergunta do Aluno</h2>
-                            <span>Nome do Aluno | </span>
-                            <span>Data da Pergunta</span>
+    
+                        <div class="pergunta-campo-botoes">
+                            <button class="editarButton pergunta-botao"><i class="ph-bold ph-pencil-simple-line"></i> EDITAR</button>
+                            <button class="addButton pergunta-botao"><i class="ph ph-upload-simple"></i> ADICIONAR</button>
                         </div>
                     </div>
-
-                    <div class="pergunta-campo-botoes">
-                        <button class="editarButton pergunta-botao"><i class="ph-bold ph-pencil-simple-line"></i> EDITAR</button>
-                        <button class="excluirButton pergunta-botao"><i class="ph-bold ph-trash-simple"></i> EXCLUIR</button>
-                    </div>
+    
+                    <textarea cols="30" rows="10" id="pergunta-campo-resposta" class="pergunta-campo-resposta">
+                    </textarea>
                 </div>
-
-                <input type="text" class="pergunta-camporesposta">
-
-                </input>
             </div>
 
-            <div class="pergunta" id="pergunta">
-
-                <div class="pergunta-cabecalho">
-                    <div class="pergunta-campo-informacoes">
-                        <div class="pergunta-imagem">
-                            <img src="imagens/user.png" alt="imagem-perfil" width="40px" height="40px">
+            <!-- CAMPO DE PERGUNTAS COM RESPOSTAS -->
+            <div id="perguntas-resposta">
+                <!-- PERGUNTA 1  -->
+                <div class="pergunta" id="pergunta">
+                    <div class="pergunta-cabecalho">
+                        <div class="pergunta-campo-informacoes">
+                            <div class="pergunta-imagem">
+                                <img src="imagens/user.png" alt="imagem-perfil" width="40px" height="40px">
+                            </div>
+                            <div class="pergunta-informacoes">
+                                <textarea cols="80" rows="1" id="pergunta-aluno1" class="pergunta-aluno"></textarea>
+                                <span>Nome do Aluno | </span>
+                                <span>Data da Pergunta</span>
+                            </div>
                         </div>
-                        <div class="pergunta-informacoes">
-                            <h2>Pergunta do Aluno</h2>
-                            <span>Nome do Aluno | </span>
-                            <span>Data da Pergunta</span>
+
+                        <div class="pergunta-campo-botoes">
+                            <button class="editarButton pergunta-botao"><i class="ph-bold ph-pencil-simple-line"></i> EDITAR</button>
+                            <button class="addButton pergunta-botao"><i class="ph ph-upload-simple"></i> ADICIONAR</button>
+                            <button class="excluirButton pergunta-botao"><i class="ph-bold ph-trash-simple"></i> EXCLUIR</button>
                         </div>
                     </div>
 
-                    <div class="pergunta-campo-botoes">
-                        <button class="editarButton pergunta-botao"><i class="ph-bold ph-pencil-simple-line"></i> EDITAR</button>
-                        <button class="excluirButton pergunta-botao"><i class="ph-bold ph-trash-simple"></i> EXCLUIR</button>
-                    </div>
+                    <textarea cols="30" rows="10" id="pergunta-campo-resposta1" class="pergunta-campo-resposta">
+                    </textarea>
                 </div>
 
-                <input type="text" class="pergunta-camporesposta">
+                <!-- PERGUNTA 2  -->
+                <div class="pergunta" id="pergunta">
+                    <div class="pergunta-cabecalho">
+                        <div class="pergunta-campo-informacoes">
+                            <div class="pergunta-imagem">
+                                <img src="imagens/user.png" alt="imagem-perfil" width="40px" height="40px">
+                            </div>
+                            <div class="pergunta-informacoes">
+                                <h2>Pergunta do Aluno</h2>
+                                <span>Nome do Aluno | </span>
+                                <span>Data da Pergunta</span>
+                            </div>
+                        </div>
 
-                </input>
+                        <div class="pergunta-campo-botoes">
+                            <button class="editarButton pergunta-botao"><i class="ph-bold ph-pencil-simple-line"></i> EDITAR</button>
+                            <button class="addButton pergunta-botao"><i class="ph ph-upload-simple"></i> ADICIONAR</button>
+                            <button class="excluirButton pergunta-botao"><i class="ph-bold ph-trash-simple"></i> EXCLUIR</button>
+                        </div>
+                    </div>
+
+                    <textarea cols="30" rows="10" id="pergunta-campo-resposta2" class="pergunta-campo-resposta">
+                    </textarea>
+                </div>  
+                
+                <!-- PERGUNTA 3  -->
+                <div class="pergunta" id="pergunta">
+                    <div class="pergunta-cabecalho">
+                        <div class="pergunta-campo-informacoes">
+                            <div class="pergunta-imagem">
+                                <img src="imagens/user.png" alt="imagem-perfil" width="40px" height="40px">
+                            </div>
+                            <div class="pergunta-informacoes">
+                                <h2>Pergunta do Aluno</h2>
+                                <span>Nome do Aluno | </span>
+                                <span>Data da Pergunta</span>
+                            </div>
+                        </div>
+
+                        <div class="pergunta-campo-botoes">
+                            <button class="editarButton pergunta-botao"><i class="ph-bold ph-pencil-simple-line"></i> EDITAR</button>                            
+                            <button class="addButton pergunta-botao"><i class="ph ph-upload-simple"></i> ADICIONAR</button>
+                            <button class="excluirButton pergunta-botao"><i class="ph-bold ph-trash-simple"></i> EXCLUIR</button>
+                        </div>
+                    </div>
+
+                    <textarea cols="30" rows="10" id="pergunta-campo-resposta3" class="pergunta-campo-resposta">
+                    </textarea>
+                </div>
+
+                <!-- PERGUNTA 4  -->
+                <div class="pergunta" id="pergunta">
+                    <div class="pergunta-cabecalho">
+                        <div class="pergunta-campo-informacoes">
+                            <div class="pergunta-imagem">
+                                <img src="imagens/user.png" alt="imagem-perfil" width="40px" height="40px">
+                            </div>
+                            <div class="pergunta-informacoes">
+                                <h2>Pergunta do Aluno</h2>
+                                <span>Nome do Aluno | </span>
+                                <span>Data da Pergunta</span>
+                            </div>
+                        </div>
+
+                        <div class="pergunta-campo-botoes">
+                            <button class="editarButton pergunta-botao"><i class="ph-bold ph-pencil-simple-line"></i> EDITAR</button>
+                            <button class="addButton pergunta-botao"><i class="ph ph-upload-simple"></i> ADICIONAR</button>
+                            <button class="excluirButton pergunta-botao"><i class="ph-bold ph-trash-simple"></i> EXCLUIR</button>
+                            
+                        </div>
+                    </div>
+
+                    <textarea cols="30" rows="10" id="pergunta-campo-resposta4" class="pergunta-campo-resposta">
+                    </textarea>
+                </div>
+            </div>    
+            
+            <!-- CAMPO DE PERGUNTAS SEM RESPOSTAS -->
+            <div id="perguntas-sem-resposta">    
+                <div class="pergunta" id="pergunta">
+
+                    <div class="pergunta-cabecalho">
+                        <div class="pergunta-campo-informacoes">
+                            <div class="pergunta-imagem">
+                                <img src="imagens/user.png" alt="imagem-perfil" width="40px" height="40px">
+                            </div>
+                            <div class="pergunta-informacoes">
+                                <h2>Pergunta do Aluno</h2>
+                                <span>Nome do Aluno | </span>
+                                <span>Data da Pergunta</span>
+                            </div>
+                        </div>
+
+                        <div class="pergunta-campo-botoes">
+                            <button class="editarButton pergunta-botao"><i class="ph-bold ph-pencil-simple-line"></i> EDITAR</button>
+                            <button class="addButton pergunta-botao"><i class="ph ph-upload-simple"></i> ADICIONAR</button>
+                            <button class="excluirButton pergunta-botao"><i class="ph-bold ph-trash-simple"></i> EXCLUIR</button>
+                        </div>
+                    </div>
+
+                    <textarea cols="30" rows="10" id="pergunta-camporesposta2" class="pergunta-campo-resposta">
+                    </textarea>
+                </div>
             </div>
 
-            <div class="pergunta" id="pergunta">
+            <!-- CAMPO DE PERGUNTAS EXCLUIDAS  -->
+            <div id="perguntas-excluidas">    
+                <div class="pergunta" id="pergunta">
 
-                <div class="pergunta-cabecalho">
-                    <div class="pergunta-campo-informacoes">
-                        <div class="pergunta-imagem">
-                            <img src="imagens/user.png" alt="imagem-perfil" width="40px" height="40px">
+                    <div class="pergunta-cabecalho">
+                        <div class="pergunta-campo-informacoes">
+                            <div class="pergunta-imagem">
+                                <img src="imagens/user.png" alt="imagem-perfil" width="40px" height="40px">
+                            </div>
+                            <div class="pergunta-informacoes">
+                                <h2>Pergunta do Aluno</h2>
+                                <span>Nome do Aluno | </span>
+                                <span>Data da Pergunta</span>
+                            </div>
                         </div>
-                        <div class="pergunta-informacoes">
-                            <h2>Pergunta do Aluno</h2>
-                            <span>Nome do Aluno | </span>
-                            <span>Data da Pergunta</span>
+
+                        <div class="pergunta-campo-botoes">
+                            <button class="recuperarButton pergunta-botao"><i class="ph ph-archive-box"></i> RECUPERAR</button>
+                            <button class="editarButton pergunta-botao"><i class="ph-bold ph-pencil-simple-line"></i> EDITAR</button>                           
                         </div>
                     </div>
 
-                    <div class="pergunta-campo-botoes">
-                        <button class="editarButton pergunta-botao"><i class="ph-bold ph-pencil-simple-line"></i> EDITAR</button>
-                        <button class="excluirButton pergunta-botao"><i class="ph-bold ph-trash-simple"></i> EXCLUIR</button>
-                    </div>
+                    <textarea cols="30" rows="10" id="pergunta-camporesposta" class="pergunta-campo-resposta">
+                    </textarea>
                 </div>
-
-                <input type="text" class="pergunta-camporesposta">
-
-                </input>
             </div>
          
         </main>
